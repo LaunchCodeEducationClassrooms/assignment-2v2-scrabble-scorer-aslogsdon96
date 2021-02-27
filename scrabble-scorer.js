@@ -79,7 +79,7 @@ function transform(obj) {
       transformationObj[oldPointStructure['4'][i].toLowerCase()] = 4;
     }
     for (i = 0; i < oldPointStructure['5'].length; i++) {
-      transformationObj[oldPointStructure['5'][i].toLowerCase()] = 1;
+      transformationObj[oldPointStructure['5'][i].toLowerCase()] = 5;
     }
     for (i = 0; i < oldPointStructure['8'].length; i++) {
       transformationObj[oldPointStructure['8'][i].toLowerCase()] = 8;
@@ -108,17 +108,17 @@ const scoringAlgorithms = [
   {
     name: "0 - Simple",
     description: "One point per character",
-    scorerFunction: simpleScore
+    scoringFunction: simpleScore
   },
   {
     name: "1 - Vowel Bonus",
     description: "Vowels are worth 3 points",
-    scorerFunction: vowelBonusScore
+    scoringFunction: vowelBonusScore
   },
   {
     name: "2 - Scrabble",
     description: "Uses scrabble point system",
-    scorerFunction: scrabbleScore
+    scoringFunction: scrabbleScore
   }
 ];
 
@@ -134,11 +134,11 @@ function runProgram() {
    initialPrompt();
    scorerPrompt();
    if (scoringSystemSelection == 0) {
-     console.log(`Score for '${testWord}': ` + scoringAlgorithms[0].scorerFunction(testWord));
+     console.log(`Score for '${testWord}': ` + scoringAlgorithms[0].scoringFunction(testWord));
    } else if (scoringSystemSelection == 1) {
-     console.log(`Score for '${testWord}': ` + scoringAlgorithms[1].scorerFunction(testWord));
+     console.log(`Score for '${testWord}': ` + scoringAlgorithms[1].scoringFunction(testWord));
    } else if (scoringSystemSelection == 2) {
-     console.log(`Score for '${testWord}': ` + scoringAlgorithms[2].scorerFunction(testWord));
+     console.log(`Score for '${testWord}': ` + scoringAlgorithms[2].scoringFunction(testWord));
    }
 }
 
